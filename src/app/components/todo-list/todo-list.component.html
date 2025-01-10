@@ -1,4 +1,4 @@
-КОМПОНЕНТ СПИСКА ЗАДАЧ
+<app-create-todo-form (createTodo)="createTodo($event)"></app-create-todo-form>
 
 <div class="div-cards" style="display: flex; flex-wrap: wrap">
   <div *ngFor="let todo of TodosService.todos | async" class="card">

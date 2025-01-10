@@ -1,0 +1,40 @@
+<h1>CREATE todo form</h1>
+<div
+  style="margin: 30px 30px 30px 0px"
+  [formGroup]="formtodo"
+  (ngSubmit)="submitTodoform()"
+>
+  <form style="display: flex; flex-direction: column">
+    <p>ID</p>
+    <div
+      *ngIf="formtodo.controls['id'].invalid && (formtodo.controls['id'].dirty || formtodo.controls['id'].touched)"
+      class="alert"
+    >
+      <div *ngIf="formtodo.controls['id'].errors" style="color: red">
+        Id введено неправильно
+      </div>
+    </div>
+    <input type="text" class="form-input" formControlName="id" />
+    <p>Страница</p>
+    <div
+      *ngIf="formtodo.controls['title'].invalid && (formtodo.controls['title'].dirty || formtodo.controls['title'].touched)"
+      class="alert"
+    >
+      <div *ngIf="formtodo.controls['title'].errors" style="color: red">
+        Страница введена неправильно
+      </div>
+    </div>
+    <input type="text" class="form-input" formControlName="title" />
+    <p>userID</p>
+    <input type="text" class="form-input" formControlName="userId" />
+    <p>Задача выполнена</p>
+    <input type="text" class="form-input" formControlName="completed" />
+    <button
+      style="width: 150px; margin-top: 20px"
+      [disabled]="!formtodo.valid"
+      mat-button
+    >
+      Создать задачу
+    </button>
+  </form>
+</div>
