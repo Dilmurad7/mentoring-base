@@ -4,6 +4,12 @@ import { BehaviorSubject } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class UsersService {
+  AddUser(result: any) {
+    throw new Error('Method not implemented.');
+  }
+  updateUser(result: any) {
+    throw new Error('Method not implemented.');
+  }
   private usersSubject$ = new BehaviorSubject<User[]>([]);
   users$ = this.usersSubject$.asObservable();
   setUsers(users: User[]) {
@@ -30,12 +36,13 @@ export class UsersService {
     const userIsExisting = this.usersSubject$.value.find(
       (currentElement) => currentElement.email === user.email
     );
-    console.log(userIsExisting);
     if (userIsExisting !== undefined) {
       alert('Такой email зарегистрирован');
     } else {
-      alert('Новый user добавлен');
       this.usersSubject$.next([...this.usersSubject$.value, user]);
+      setTimeout(() => {
+        alert('Новый user добавлен');
+      }, 0);
     }
   }
 }

@@ -1,4 +1,5 @@
 <h1>CREATE todo form</h1>
+<!--
 <div
   style="margin: 30px 30px 30px 0px"
   [formGroup]="formtodo"
@@ -14,7 +15,13 @@
         Id введено неправильно
       </div>
     </div>
-    <input type="text" class="form-input" formControlName="id" />
+    <input
+      matInput
+      type="number"
+      placeholder="ВведитеID"
+      class="form-input"
+      formControlName="id"
+    />
     <p>Страница</p>
     <div
       *ngIf="formtodo.controls['title'].invalid && (formtodo.controls['title'].dirty || formtodo.controls['title'].touched)"
@@ -25,8 +32,18 @@
       </div>
     </div>
     <input type="text" class="form-input" formControlName="title" />
+
     <p>userID</p>
-    <input type="text" class="form-input" formControlName="userId" />
+    <input
+      class="form-input"
+      formControlName="userId"
+      matInput
+      type="number"
+      placeholder="ВведитеID"
+      class="form-input"
+      formControlName="id"
+    />
+
     <p>Задача выполнена</p>
     <input type="text" class="form-input" formControlName="completed" />
     <button
@@ -35,6 +52,45 @@
       mat-button
     >
       Создать задачу
+    </button>
+  </form>
+</div> -->
+<div style="display: flex">
+  <form
+    [formGroup]="formtodo"
+    class=""
+    style="display: flex; flex-direction: column"
+  >
+    <mat-form-field appearance="fill">
+      <mat-label>Название задачи</mat-label>
+      <input #inputElement matInput formControlName="userId" />
+      <mat-error>No correct</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Автор задачи</mat-label>
+      <input #inputElement matInput formControlName="title" />
+      <mat-error>No correct</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>ID</mat-label>
+      <input #inputElement matInput formControlName="id" />
+      <mat-error>No correct</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Задача завершена?</mat-label>
+      <input #inputElement matInput formControlName="completed" />
+      <mat-error>No correct</mat-error>
+    </mat-form-field>
+    <button
+      [mat-dialog-close]="formtodo.value"
+      (click)="submitTodoform()"
+      type="submit"
+      class="bg-gray-400 py-1 justify-center"
+      [disabled]="formtodo.invalid"
+      mat-flat-button
+    >
+      Add Todo
+      <mat-icon> add </mat-icon>
     </button>
   </form>
 </div>

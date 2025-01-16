@@ -33,21 +33,10 @@ export class TodosService {
     if (todoIsExisting !== undefined) {
       alert('Такой title уже зарегистрирован');
     } else {
-      alert('Новый user добавлен');
+      this.todosSubject$.next([...this.todosSubject$.value, createTodo]);
+      setTimeout(() => {
+        alert('Новый user добавлен');
+      }, 0);
     }
-    this.todosSubject$.next([...this.todosSubject$.value, createTodo]);
   }
 }
-
-// createUser(user: User) {
-//   const userIsExisting = this.usersSubject$.value.find(
-//     (currentElement) => currentElement.email === user.email
-//   );
-//   console.log(userIsExisting);
-//   if (userIsExisting !== undefined) {
-//     alert('Такой email зарегистрирован');
-//   } else {
-//     alert('Новый user добавлен');
-//     this.usersSubject$.next([...this.usersSubject$.value, user]);
-//   }
-// }

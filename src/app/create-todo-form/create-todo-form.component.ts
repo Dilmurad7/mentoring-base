@@ -1,5 +1,10 @@
 import { NgFor, NgIf } from '@angular/common';
-import { Component, EventEmitter, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Output,
+} from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -7,14 +12,35 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import {
+  MatError,
+  MatFormField,
+  MatFormFieldModule,
+  MatLabel,
+} from '@angular/material/form-field';
+import { MatIcon } from '@angular/material/icon';
+import { MatDialogClose } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
+import { MatInput, MatInputModule } from '@angular/material/input';
+import { from } from 'rxjs';
 
 @Component({
   selector: 'app-create-todo-form',
   templateUrl: './create-todo-form.html',
   styleUrls: ['./create-todo-form.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [ReactiveFormsModule, NgIf, MatButtonModule],
+  imports: [
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatInput,
+    MatFormField,
+    MatFormFieldModule,
+    MatLabel,
+    MatIcon,
+    MatError,
+    MatDialogClose,
+  ],
 })
 export class CreateTodoFormComponent {
   @Output()
@@ -29,16 +55,18 @@ export class CreateTodoFormComponent {
       Validators.required,
       Validators.minLength(3),
     ]),
-    userId: new FormControl(null, [Validators.maxLength(11)]),
+    userId: new FormControl(null, [
+      Validators.required,
+      Validators.maxLength(11),
+    ]),
   });
-  public submitTodoform(): void {
+  public submitTodoform() {
     this.createTodo.emit(this.formtodo.value);
     this.formtodo.reset();
   }
 
   constructor() {
     this.formtodo.valueChanges.subscribe((formValue) => console.log(formValue));
-
     console.log(this.formtodo.get('id')?.errors);
   }
 }

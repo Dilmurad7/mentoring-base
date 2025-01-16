@@ -6,5 +6,7 @@
   <div>{{ todo.title }}</div>
   <div>{{ todo.id }}</div>
   <div>{{ todo.completed }}</div>
-  <button (click)="onDeleteTodo(todo.id)">Удалить задачу</button>
+  <button class="todo_btn_card" (click)="onDeleteTodo(todo.id)">
+    Удалить задачу
+  </button>
 </div>

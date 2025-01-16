@@ -1,0 +1,38 @@
+<h1>{{ data.user.email }}</h1>
+<form
+  [formGroup]="form"
+  style="display: flex; flex-direction: column; padding: 50px"
+>
+  <mat-form-field appearance="fill">
+    <mat-label>Name:</mat-label>
+    <input #inputElement matInput formControlName="name" />
+    <mat-error>No correct</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Email</mat-label>
+    <input type="email" #inputElement matInput formControlName="email" />
+    <mat-error>No correct</mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Web Site</mat-label>
+    <input #inputElement matInput formControlName="website" />
+    <mat-error>No correct</mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Company</mat-label>
+    <input #inputElement matInput formControlName="companyName" />
+    <mat-error>No correct</mat-error>
+  </mat-form-field>
+  <button
+    [mat-dialog-close]="form.value"
+    type="submit"
+    class="bg-gray-400 py-1 justify-center"
+    [disabled]="form.invalid"
+    mat-stroked-button
+    [mat-dialog-close]="userWidthUpdateFields"
+  >
+    Редактировать
+    <mat-icon> add </mat-icon>
+  </button>
+</form>

@@ -1,4 +1,4 @@
-<h1>CREATE USER FORM</h1>
+<!-- <h1>CREATE USER FORM</h1>
 <div style="margin: 30 30px 30px 0px">
   <form
     style="display: flex; flex-direction: column"
@@ -24,7 +24,13 @@
         Email введен неправильно
       </div>
     </div>
-    <input type="text" class="form-input" formControlName="email" />
+    <input
+      type="text"
+      class="form-input"
+      matInput
+      formControlName="email"
+      placeholder="ru.pat@example.com"
+    />
     <p>WEBSITE</p>
     <div
       *ngIf="form.controls['website'].invalid && (form.controls['website'].dirty || form.controls['website'].touched)"
@@ -34,7 +40,15 @@
         Web-сайт введен неправильно
       </div>
     </div>
-    <input type="text" class="form-input" formControlName="website" />
+
+    <input
+      type="text"
+      class="form-input"
+      formControlName="website"
+      matInput
+      placeholder="www.qr@example.com"
+      appearance="fill"
+    />
     <p>COMPANY NAME</p>
     <div
       *ngIf="form.controls['companyName'].invalid && (form.controls['companyName'].dirty || form.controls['companyName'].touched)"
@@ -47,6 +61,46 @@
     <input type="text" class="form-input" formControlName="companyName" />
     <button style="width: 200px; margin-top: 20px" [disabled]="!form.valid">
       CREATE USER
+    </button>
+  </form>
+</div> -->
+<div style="display: flex">
+  <form
+    [formGroup]="form"
+    class=""
+    style="display: flex; flex-direction: column"
+  >
+    <mat-form-field appearance="fill">
+      <mat-label>Name:</mat-label>
+      <input #inputElement matInput formControlName="name" />
+      <mat-error>No correct</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input type="email" #inputElement matInput formControlName="email" />
+      <mat-error>No correct</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Web Site</mat-label>
+      <input #inputElement matInput formControlName="website" />
+      <mat-error>No correct</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Company</mat-label>
+      <input #inputElement matInput formControlName="companyName" />
+      <mat-error>No correct</mat-error>
+    </mat-form-field>
+    <button
+      [mat-dialog-close]="form.value"
+      (click)="submitForm()"
+      type="submit"
+      class="bg-gray-400 py-1 justify-center"
+      [disabled]="form.invalid"
+      mat-stroked-button
+    >
+      Create User
+      <mat-icon> add </mat-icon>
     </button>
   </form>
 </div>

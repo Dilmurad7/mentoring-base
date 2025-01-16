@@ -1,7 +1,6 @@
-import { NgFor } from "@angular/common";
-import { Component, EventEmitter, Input, Output } from "@angular/core";
-import { TodoListComponent } from "../todo-list.component";
-
+import { NgFor } from '@angular/common';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { TodoListComponent } from '../todo-list.component';
 
 @Component({
   selector: 'app-todo-card',
@@ -12,13 +11,10 @@ import { TodoListComponent } from "../todo-list.component";
 })
 export class TodoCardComponent {
   @Input()
-  todo : any
-
-
-@Output()
-deleteTodo = new EventEmitter();
-
-onDeleteTodo(todoId: number) {
-  this.deleteTodo.emit(todoId)
-}
+  todo: any;
+  @Output()
+  deleteTodo = new EventEmitter();
+  onDeleteTodo(todoId: number) {
+    this.deleteTodo.emit(todoId);
+  }
 }
