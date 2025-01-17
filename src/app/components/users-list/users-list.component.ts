@@ -8,13 +8,16 @@ import { UserCardComponent } from './user-card/user-card.component';
 import { User } from '../../Interfaces/user.interface';
 import { publishFacade } from '@angular/compiler';
 import { EditUserDialogComponent } from './edit-user-dialog/edit-user-dialog.component';
+import { CreateUserDialogComponent } from './create-user-dialog/create-user-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-user-list',
   templateUrl: './users-list.component.html',
   styleUrls: ['./users-list.component.scss'],
   standalone: true,
-  imports: [NgFor, UserCardComponent, AsyncPipe, CreateUserFormComponent],
+  imports: [NgFor, UserCardComponent, AsyncPipe, MatButtonModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UsersListComponent {
@@ -22,17 +25,12 @@ export class UsersListComponent {
   usersService = inject(UsersService);
   readonly users$ = this.usersService.users$;
   dialog: any;
+  readonly createUserDialog = inject(MatDialog);
 
   constructor() {
     this.usersApiService.getUsers().subscribe((response: User[]) => {
       this.usersService.setUsers(response);
     });
-
-    // this.usersApiService.getUsers().subscribe((response: User[]) => {
-    //   this.usersService.setUsers(response);
-    //   console.log(response);
-    // });
-    // this.usersService.users$.subscribe((users) => console.log(users));
   }
 
   deleteUser(id: number) {
@@ -48,17 +46,23 @@ export class UsersListComponent {
     });
   }
 
-  public createUser(formData: NewUser) {
-    this.usersService.createUser({
-      id: new Date().getTime(),
-      name: formData.name,
-      email: formData.email,
-      website: formData.website,
-      company: {
-        name: formData.companyName,
-      },
+  public createUser() {
+    const dialogRef = this.createUserDialog.open(CreateUserDialogComponent, {
+      data: {},
+      width: '500px',
+      height: '500',
     });
-    console.log('ДАННЫЕ ФОРМЫ', event);
+    dialogRef.afterClosed().subscribe((createdUser: NewUser) => {
+      this.usersService.createUser({
+        id: new Date().getTime(),
+        name: createdUser.name,
+        email: createdUser.email,
+        website: createdUser.website,
+        company: {
+          name: createdUser.companyName,
+        },
+      });
+    });
   }
   public openDialog(user: User) {
     const dialogRef = this.dialog.open(EditUserDialogComponent, {

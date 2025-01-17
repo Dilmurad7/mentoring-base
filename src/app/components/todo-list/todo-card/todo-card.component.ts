@@ -1,13 +1,14 @@
 import { NgFor } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { TodoListComponent } from '../todo-list.component';
+import { LimitTitlePipe } from '../../../pipes/limitTitle.pipe';
 
 @Component({
   selector: 'app-todo-card',
   templateUrl: './todo-card.component.html',
   styleUrl: './todo-card.component.scss',
   standalone: true,
-  imports: [],
+  imports: [LimitTitlePipe],
 })
 export class TodoCardComponent {
   @Input()

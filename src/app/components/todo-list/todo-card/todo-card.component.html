@@ -3,7 +3,7 @@
   style="width: 200px; height: 250px; border: 1px solid black; margin: 10px"
 >
   <div>{{ todo.userId }}</div>
-  <div>{{ todo.title }}</div>
+  <div>{{ todo.title | limit : 10 }}</div>
   <div>{{ todo.id }}</div>
   <div>{{ todo.completed }}</div>
   <button class="todo_btn_card" (click)="onDeleteTodo(todo.id)">

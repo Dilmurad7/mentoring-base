@@ -3,8 +3,8 @@
   <p>{{ user.email }}</p>
   <p>{{ user.website }}</p>
   <p>{{ user.company.name }}</p>
-  <button class="btn_card" (click)="onDeleteUser(user.id)">
-    УДАЛИТЬ ЮЗЕРА
-  </button>
+  <p>{{ user.phone | removeHyphens }}</p>
+  <!-- "onDeleteUser(user.id)" -->
+  <button class="btn_card" (click)="OpenDeleteDialog()">УДАЛИТЬ ЮЗЕРА</button>
   <button class="btn_card" (click)="openDialog()">РЕДАКТИРОВАТЬ ЮЗЕРА</button>
 </div>
