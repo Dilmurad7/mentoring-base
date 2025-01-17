@@ -17,6 +17,7 @@ import { Todo } from '../../Interfaces/todo.interface';
 export class TodoListComponent {
   readonly todosApiService = inject(TodosApiService);
   readonly TodosService = inject(TodosService);
+  // readonly todos$ = this.TodosService.todos;
 
   constructor() {
     this.todosApiService.getTodos().subscribe((response: any) => {
