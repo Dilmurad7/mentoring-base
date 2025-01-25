@@ -1,0 +1,38 @@
+
+  <form class="todo-form"
+    [formGroup]="formtodo"
+    class=""
+    style="display: flex; flex-direction: column"
+  >
+    <mat-form-field appearance="outline">
+      <mat-label>Название задачи</mat-label>
+      <input #inputElement matInput formControlName="userId" />
+      <mat-error>No correct</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Автор задачи</mat-label>
+      <input #inputElement matInput formControlName="title" />
+      <mat-error>No correct</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>ID</mat-label>
+      <input #inputElement matInput formControlName="id" />
+      <mat-error>No correct</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Задача завершена?</mat-label>
+      <input #inputElement matInput formControlName="completed" />
+      <mat-error>No correct</mat-error>
+    </mat-form-field>
+    <button
+      [mat-dialog-close]="formtodo.value"
+      (click)="submitTodoform()"
+      type="submit"
+      class="bg-gray-400 py-1 justify-center"
+      [disabled]="formtodo.invalid"
+      mat-flat-button
+    >
+      Add Todo
+      <mat-icon> add </mat-icon>
+    </button>
+  </form>

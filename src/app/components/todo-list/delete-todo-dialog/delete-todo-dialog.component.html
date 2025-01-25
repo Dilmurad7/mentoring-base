@@ -1,0 +1,13 @@
+<h2 mat-dialog-close="delete-dialog-title">
+  <mat-icon class="warning-icon">warning</mat-icon>
+  Вы точно хотите удалить пользователя - <b>{{ data.todo.userId }}</b>?
+</h2>
+<mat-dialog-content class="delete-dialog-content">
+  Это действие нельзя отменить. Пользователь будет удален навсегда.
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-stroked-button mat-dialog-close class="cancel-btn">Отмена</button>
+  <button mat-flat-button color="warn" [mat-dialog-close]="true" class="delete-btn">
+    <mat-icon>delete</mat-icon> Удалить
+  </button>
+</mat-dialog-actions>

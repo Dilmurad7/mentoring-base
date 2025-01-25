@@ -7,6 +7,7 @@
         </div>
         <nav class="header-menu">
           <ul class="header-items">
+
             <li>
               <a routerLink=""> {{ headerItem1 }} </a>
             </li>
@@ -27,6 +28,9 @@
       <nav class="header-menu_2">
         <div class="header-info-container white-color">
           <div>
+            <button routerLink="admin">Админка</button>
+          </div>
+          <div>
             <button routerLink="users">Users</button>
           </div>
           <div>
@@ -35,10 +39,16 @@
           <img src="../assets/Phone.svg" alt="" />
           <span>+ 793717677771</span>
           <img src="../assets/Vector.svg" alt="Избраное" />
-          <button class="cart-button header-info-item">
-            <img src="../assets/Mask group.png" alt="cart" />
-            <div style="margin-left: 10px; font-size: 16px">Пусто</div>
+          <button class="cart-button header-info-item" hoverCart>
+            <img src="../assets/Mask group.png" alt="cart" hoverCart />
+            <div style="margin-left: 10px; font-size: 16px" hoverCart>Пусто</div>
           </button>
+          <div class="btn-auth">
+            <button (click)="openDialog()" class="button">Войти</button>
+          </div>
+          <div class="btn-auth">
+            <button (click)="logOut()" class="button">Выйти</button>
+          </div>
         </div>
       </nav>
     </div>

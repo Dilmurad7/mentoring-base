@@ -1,10 +1,29 @@
-<div class="users_card">
+<!-- <div class="users_card" cartShadow>
+  <p>{{ user.name }}</p>
+  <p >{{ user.email }}</p>
+  <p>{{ user.website }}</p>
+  <p>{{ user.company.name }}</p>
+  <p>{{ user.phone | removeHyphens }}</p>
+  <button  (click)="OpenDeleteDialog()" mat-button color="primary">УДАЛИТЬ ЮЗЕРА</button>
+  <button  (click)="openDialog()"  mat-button color="warn" HoverShadowDirective>РЕДАКТИРОВАТЬ ЮЗЕРА</button>
+</div> -->
+ <mat-card cartShadow hoverCart class="user-card">
+<mat-card-content>
   <p>{{ user.name }}</p>
   <p>{{ user.email }}</p>
   <p>{{ user.website }}</p>
   <p>{{ user.company.name }}</p>
   <p>{{ user.phone | removeHyphens }}</p>
-  <!-- "onDeleteUser(user.id)" -->
-  <button class="btn_card" (click)="OpenDeleteDialog()">УДАЛИТЬ ЮЗЕРА</button>
-  <button class="btn_card" (click)="openDialog()">РЕДАКТИРОВАТЬ ЮЗЕРА</button>
-</div>
+</mat-card-content>
+   <mat-card-actions align="end">
+    <button (click)="OpenDeleteDialog()" mat-raised-button color="warn">
+      <mat-icon>delete</mat-icon> УДАЛИТЬ 
+    </button>
+    <button (click)="openDialog()" mat-raised-button color="primary"  matTooltip="Редактировать данные пользователя">
+      <mat-icon>edit</mat-icon> РЕДАКТИРОВАТЬ
+    </button>
+  </mat-card-actions>
+</mat-card>
+
+
+

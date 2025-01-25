@@ -1,7 +1,15 @@
-<p>delete-user-dialog works!</p>
-<h2 mat-dialog-title>УДАЛИТЬ Юзера</h2>
-<mat-dialog-content> </mat-dialog-content>
-<mat-dialog-actions>
-  <button mat-button mat-dialog-close="">No Thanks</button>
-  <button mat-button mat-dialog-close="">Ok</button>
+<h2 mat-dialog-title class="delete-dialog-title">
+  <mat-icon class="warning-icon">warning</mat-icon>
+  Вы точно хотите удалить пользователя - <b>{{ data.user.name }}</b>?
+</h2>
+
+<mat-dialog-content class="delete-dialog-content">
+  Это действие нельзя отменить. Пользователь будет удален навсегда.
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-stroked-button mat-dialog-close class="cancel-btn">Отмена</button>
+  <button mat-flat-button color="warn" [mat-dialog-close]="true" class="delete-btn">
+    <mat-icon>delete</mat-icon> Удалить
+  </button>
 </mat-dialog-actions>

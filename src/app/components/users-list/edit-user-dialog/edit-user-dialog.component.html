@@ -1,38 +1,48 @@
-<h1>{{ data.user.email }}</h1>
-<form
-  [formGroup]="form"
-  style="display: flex; flex-direction: column; padding: 50px"
->
-  <mat-form-field appearance="fill">
-    <mat-label>Name:</mat-label>
-    <input #inputElement matInput formControlName="name" />
-    <mat-error>No correct</mat-error>
-  </mat-form-field>
 
-  <mat-form-field appearance="fill">
-    <mat-label>Email</mat-label>
-    <input type="email" #inputElement matInput formControlName="email" />
-    <mat-error>No correct</mat-error>
-  </mat-form-field>
-  <mat-form-field appearance="fill">
-    <mat-label>Web Site</mat-label>
-    <input #inputElement matInput formControlName="website" />
-    <mat-error>No correct</mat-error>
-  </mat-form-field>
-  <mat-form-field appearance="fill">
-    <mat-label>Company</mat-label>
-    <input #inputElement matInput formControlName="companyName" />
-    <mat-error>No correct</mat-error>
-  </mat-form-field>
-  <button
-    [mat-dialog-close]="form.value"
-    type="submit"
-    class="bg-gray-400 py-1 justify-center"
-    [disabled]="form.invalid"
-    mat-stroked-button
-    [mat-dialog-close]="userWidthUpdateFields"
-  >
-    Редактировать
-    <mat-icon> add </mat-icon>
-  </button>
+<form [formGroup]="form" class="user-form">
+  <mat-card class="form-card">
+    <mat-card-title>Редактирование пользователя</mat-card-title>
+    <mat-card-content>
+      <mat-form-field appearance="outline">
+        <mat-label>Имя</mat-label>
+        <input matInput formControlName="name" />
+        <mat-error *ngIf="form.get('name')?.invalid">Некорректное имя</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input type="email" matInput formControlName="email" />
+        <mat-error *ngIf="form.get('email')?.invalid">Некорректный email</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Веб-сайт</mat-label>
+        <input matInput formControlName="website" />
+        <mat-error *ngIf="form.get('website')?.invalid">Некорректный сайт</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Компания</mat-label>
+        <input matInput formControlName="companyName" />
+        <mat-error *ngIf="form.get('companyName')?.invalid">Некорректное название</mat-error>
+      </mat-form-field>
+    </mat-card-content>
+
+    <mat-card-actions align="end">
+      <button mat-stroked-button class="cancel-btn" type="button" (click)="form.reset()">
+        Отмена
+      </button>
+      <button
+        mat-flat-button
+        color="primary"
+        [mat-dialog-close]="form.value"
+        type="submit"
+        class="submit-btn"
+        [disabled]="form.invalid"
+        [mat-dialog-close]="userWidthUpdateFields"
+      >
+        <mat-icon>edit</mat-icon> Редактировать
+      </button>
+    </mat-card-actions>
+  </mat-card>
 </form>

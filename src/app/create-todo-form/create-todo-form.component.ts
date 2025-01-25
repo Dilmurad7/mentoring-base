@@ -26,8 +26,8 @@ import { from } from 'rxjs';
 
 @Component({
   selector: 'app-create-todo-form',
-  templateUrl: './create-todo-form.html',
-  styleUrls: ['./create-todo-form.scss'],
+  templateUrl: './create-todo-form.component.html',
+  styleUrls: ['./create-todo-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [

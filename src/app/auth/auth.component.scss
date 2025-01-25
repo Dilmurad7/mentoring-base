@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.button-wrapper {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+
+}
+.button {
+  width: 400px;
+
+}
+
+.title {
+  margin: 10px;
+}
+
+

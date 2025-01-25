@@ -4,12 +4,7 @@ import { BehaviorSubject } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class UsersService {
-  AddUser(result: any) {
-    throw new Error('Method not implemented.');
-  }
-  updateUser(result: any) {
-    throw new Error('Method not implemented.');
-  }
+
   private usersSubject$ = new BehaviorSubject<User[]>([]);
   users$ = this.usersSubject$.asObservable();
   setUsers(users: User[]) {

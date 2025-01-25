@@ -1,12 +1,14 @@
-<!-- <button mat-stroked-button type="button" (click)="createTodo()">
-  Create User
-</button> -->
-<app-create-todo-form (createTodo)="createTodo($event)"></app-create-todo-form>
-
-<button>Create User</button>
+<button mat-stroked-button type="button" (click)="createTodo()">
+  Create Todo
+</button>
 <div class="div-cards" style="display: flex; flex-wrap: wrap">
   <div *ngFor="let todo of TodosService.todos | async" class="card">
-    <app-todo-card [todo]="todo" (deleteTodo)="deleteTodo($event)">
+    <app-todo-card
+     [todo]="todo"
+      (deleteTodo)="deleteTodo($event)"
+      (editTodo)="editTodo($event)"
+
+      >
     </app-todo-card>
   </div>
 </div>

@@ -11,13 +11,14 @@ import { EditUserDialogComponent } from './edit-user-dialog/edit-user-dialog.com
 import { CreateUserDialogComponent } from './create-user-dialog/create-user-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
+import { RedDirective } from '../../directives/red.directive';
 
 @Component({
   selector: 'app-user-list',
   templateUrl: './users-list.component.html',
   styleUrls: ['./users-list.component.scss'],
   standalone: true,
-  imports: [NgFor, UserCardComponent, AsyncPipe, MatButtonModule],
+  imports: [NgFor, UserCardComponent, AsyncPipe, MatButtonModule, RedDirective],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UsersListComponent {
@@ -50,7 +51,7 @@ export class UsersListComponent {
     const dialogRef = this.createUserDialog.open(CreateUserDialogComponent, {
       data: {},
       width: '500px',
-      height: '500',
+      height: '500px',
     });
     dialogRef.afterClosed().subscribe((createdUser: NewUser) => {
       this.usersService.createUser({
@@ -58,8 +59,9 @@ export class UsersListComponent {
         name: createdUser.name,
         email: createdUser.email,
         website: createdUser.website,
+        companyName: createdUser.companyName,
         company: {
-          name: createdUser.companyName,
+          name: createdUser.companyName
         },
       });
     });
@@ -73,13 +75,6 @@ export class UsersListComponent {
       },
       width: '500px',
     });
-    //   dialogRef.afterClosed().subscribe((result) => {
-    //     if (user) {
-    //       this.usersService.updateUser(user);
-    //     } else {
-    //       this.usersService.AddUser(result);
-    //     }
-    //   });
-    // }
+
   }
 }

@@ -1,13 +1,13 @@
 import { Component, inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 import { MatIcon } from '@angular/material/icon';
+import { User } from '../../../Interfaces/user.interface';
 import {
   MatError,
   MatFormField,
   MatInputModule,
   MatLabel,
 } from '@angular/material/input';
-import { User } from '../../../Interfaces/user.interface';
 import {
   FormControl,
   FormGroup,

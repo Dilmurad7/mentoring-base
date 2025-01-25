@@ -1,0 +1,44 @@
+<form [formGroup]="formtodo" class="todo-form">
+  <mat-card class="form-card">
+<mat-card-title>Редактирование задачи</mat-card-title>
+<mat-card-content>
+<mat-form-field appearance="outline">
+<mat-label>Id</mat-label>
+<input matInput formControlName="id" />
+<mat-error *ngIf="formtodo.get('id')?.invalid">Некорректное id</mat-error>
+</mat-form-field>
+<mat-form-field appearance="outline">
+  <mat-label>Страница</mat-label>
+  <input matInput formControlName="title" />
+  <mat-error *ngIf="formtodo.get('title')?.invalid">Некорректное id</mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>userId</mat-label>
+    <input matInput formControlName="userId" />
+    <mat-error *ngIf="formtodo.get('userId')?.invalid">Некорректное id</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Завершенность задачи</mat-label>
+      <input matInput formControlName="completed" />
+      <mat-error *ngIf="formtodo.get('completed')?.invalid">Некорректное id</mat-error>
+      </mat-form-field>
+</mat-card-content>
+<mat-card-actions align="end">
+  <button mat-stroked-button class="cancel-btn" type="button" (click)="formtodo.reset()">
+    Отмена
+  </button>
+  <button
+    mat-flat-button
+    color="primary"
+    [mat-dialog-close]="formtodo.value"
+    type="submit"
+    class="submit-btn"
+    [disabled]="formtodo.invalid"
+    [mat-dialog-close]="userWidthUpdateFields"
+  >
+    <mat-icon>edit</mat-icon> Редактировать
+  </button>
+</mat-card-actions>
+
+</mat-card>
+</form>

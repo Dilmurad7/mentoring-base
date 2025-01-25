@@ -1,12 +1,35 @@
-<div
+<!-- <div
   class="card-todo"
   style="width: 200px; height: 250px; border: 1px solid black; margin: 10px"
 >
+<div>
   <div>{{ todo.userId }}</div>
   <div>{{ todo.title | limit : 10 }}</div>
   <div>{{ todo.id }}</div>
   <div>{{ todo.completed }}</div>
-  <button class="todo_btn_card" (click)="onDeleteTodo(todo.id)">
+</div>
+<div class="buttons">
+  <button class="todo_card" (click)="OpenDeleteDialog()">
     Удалить задачу
   </button>
+  <button class="todo_card" (click)="onDeleteTodo()">
+    Редактировать задачу
+  </button>
 </div>
+</div> -->
+<mat-card  cartShadow hoverCart>
+  <mat-card-content>
+    <p>{{ todo.userId }}</p>
+    <p>{{ todo.title | limit: 10 }}</p>
+    <p>{{ todo.id }}</p>
+    <p>{{ todo.completed }}</p>
+  </mat-card-content>
+  <mat-card-actions align="end">
+    <button mat-raised-button color="warn" (click)="OpenDeleteDialog()" matTooltip="Удалить данные пользователя">
+      Удалить задачу
+    </button>
+    <button mat-raised-button color="primary" (click)="onDeleteTodo()"  matTooltip="Редактировать данные пользователя">
+      Редактировать задачу
+    </button>
+  </mat-card-actions>
+</mat-card>
